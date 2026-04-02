@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const { name, email, phone, origin, destination, transportMode, weight, date, message } = body;
 
     const { data, error } = await resend.emails.send({
-      from: 'Confidence Line Cotizaciones <onboarding@resend.dev>',
+      from: 'LogiTrust Global Cotizaciones <onboarding@resend.dev>',
       to: ['benjacatalan929@gmail.com'],
       subject: `Nueva Cotización de ${name}`,
       html: `

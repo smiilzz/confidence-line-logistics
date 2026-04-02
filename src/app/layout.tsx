@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Confidence Line Logistics",
+  title: "LogiTrust Global",
   description: "Soluciones logísticas mundiales seguras, eficientes y confiables.",
 };
 

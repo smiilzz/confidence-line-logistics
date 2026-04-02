@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2 group">
               <Ship size={32} className="text-white" />
-              <span className="font-bold text-xl text-white tracking-tight">Confidence Line</span>
+              <span className="font-bold text-xl text-white tracking-tight">LogiTrust Global</span>
             </Link>
             <p className="text-sm mt-2">
               Soluciones logísticas mundiales seguras, eficientes y confiables para tu negocio.
@@ -49,7 +49,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-brand-secondary" />
-                <span>info@confidenceline.cl</span>
+                <span>info@logitrustglobal.com</span>
               </li>
             </ul>
           </div>
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-          <p>© {new Date().getFullYear()} Confidence Line Logistics. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} LogiTrust Global. Todos los derechos reservados.</p>
           <p>Website by Antigravity</p>
         </div>
       </div>

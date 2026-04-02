@@ -26,7 +26,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <Ship size={32} className="text-white group-hover:text-brand-secondary transition-colors" />
-          <span className="font-bold text-xl tracking-tight">Confidence Line Logistics</span>
+          <span className="font-bold text-xl tracking-tight">LogiTrust Global</span>
         </Link>
 
         {/* Desktop Links */}
@@ -40,9 +40,8 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <button className="bg-white text-brand-primary font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
-            Cotizar ahora
-          </button>
+          <a href="#contacto" className="bg-white text-brand-primary font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors inline-block">
+            Cotizar ahora</a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -62,9 +61,8 @@ export default function Navbar() {
           <Link href="#nosotros" className="hover:text-brand-secondary p-2">Nosotros</Link>
           <Link href="#blog" className="hover:text-brand-secondary p-2">Recursos</Link>
           <Link href="#contacto" className="hover:text-brand-secondary p-2">Contacto</Link>
-          <button className="bg-white text-brand-primary font-bold px-6 py-2 rounded-full mt-2 w-full">
-            Cotizar ahora
-          </button>
+          <a href="#contacto" className="bg-white text-brand-primary flex items-center justify-center font-bold px-6 py-2 rounded-full mt-2 w-full">
+            Cotizar ahora</a>
         </div>
       )}
     </header>

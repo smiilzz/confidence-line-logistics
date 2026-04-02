@@ -105,7 +105,7 @@ export default function QuoteSection() {
   };
 
   return (
-    <section className="w-full py-24 bg-slate-50 relative">
+    <section id="contacto" className="w-full py-24 bg-slate-50 relative scroll-mt-20">
       {/* Background Decorator */}
       <div className="absolute top-0 w-full h-[50vh] bg-[#001f3f] z-0"></div>
 

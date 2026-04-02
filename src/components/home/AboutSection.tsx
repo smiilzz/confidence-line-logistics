@@ -30,7 +30,7 @@ const certifications = [
 
 export default function AboutSection() {
   return (
-    <section className="w-full py-24 bg-white overflow-hidden">
+    <section id="nosotros" className="w-full py-24 bg-white overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -46,7 +46,7 @@ export default function AboutSection() {
               Más que logística, <br className="hidden md:block" />somos tu socio estratégico
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed text-balance">
-              Con años de experiencia en el mercado chileno e internacional, en <span className="font-semibold text-brand-primary">Confidence Line Logistics</span> nos especializamos en simplificar la complejidad del comercio exterior. Nos mueve la eficiencia, la seguridad y el compromiso inquebrantable con el éxito de tu negocio.
+              Con años de experiencia en el mercado chileno e internacional, en <span className="font-semibold text-brand-primary">LogiTrust Global</span> nos especializamos en simplificar la complejidad del comercio exterior. Nos mueve la eficiencia, la seguridad y el compromiso inquebrantable con el éxito de tu negocio.
             </p>
             
             <div className="space-y-6 pt-4">

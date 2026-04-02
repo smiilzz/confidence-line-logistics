@@ -10,7 +10,7 @@ const locations = [
 
 export default function CoverageSection() {
   return (
-    <section className="w-full py-24 bg-[#001f3f] text-white overflow-hidden relative">
+    <section id="cobertura" className="w-full py-24 bg-[#001f3f] text-white overflow-hidden relative scroll-mt-20">
       {/* Decorative background gradients */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-blue-500/10 blur-[120px]" />
