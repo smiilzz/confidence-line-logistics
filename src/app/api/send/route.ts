@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { supabase } from '@/lib/supabase';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -8,7 +9,38 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, email, phone, origin, destination, transportMode, weight, date, message } = body;
 
-    const { data, error } = await resend.emails.send({
+    const dataToInsert = {
+      nombre: name,
+      email,
+      telefono: phone,
+      origen: origin,
+      destino: destination,
+      transporte: transportMode,
+      peso: weight,
+      fecha_envio: date,
+      mensaje: message || '',
+    };
+
+    console.log("Insertando en Supabase...", dataToInsert);
+
+    // 1. Guardar registro en Supabase
+    const { error: dbError } = await supabase
+      .from('quotes')
+      .insert([dataToInsert]);
+
+    // Si la base de datos falla, abortamos con 500. No se envía el mail.
+    if (dbError) {
+      console.error('Error de Supabase:', dbError);
+      return NextResponse.json(
+        { error: 'No se pudo guardar la cotización en la base de datos' }, 
+        { status: 500 }
+      );
+    }
+    
+    console.log('✅ Registro insertado exitosamente en Supabase');
+
+    // 2. Si la DB fue exitosa, enviar correo vía Resend
+    const { data: emailData, error: emailError } = await resend.emails.send({
       from: 'LogiTrust Global Cotizaciones <onboarding@resend.dev>',
       to: ['benjacatalan929@gmail.com'],
       subject: `Nueva Cotización de ${name}`,
@@ -30,15 +62,16 @@ export async function POST(req: Request) {
       `,
     });
 
-    if (error) {
-      console.error('Resend API Error:', error);
-      return NextResponse.json({ error: error.message }, { status: 400 });
+    if (emailError) {
+      console.error('Resend API Error:', emailError);
+      return NextResponse.json({ error: emailError.message }, { status: 400 });
     }
 
-    console.log("Cotización enviada con Resend:", data);
-    return NextResponse.json({ message: 'Cotización enviada con éxito', data }, { status: 200 });
+    console.log("✅ Email de confirmación enviado con Resend:", emailData);
+    return NextResponse.json({ message: 'Respaldo DB y Email enviados exitosamente' }, { status: 200 });
+
   } catch (error) {
-    console.error('Error interno al procesar la cotización:', error);
+    console.error('Error inesperado al procesar la cotización:', error);
     return NextResponse.json(
       { error: 'Error interno del servidor' },
       { status: 500 }
