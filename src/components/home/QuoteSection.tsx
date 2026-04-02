@@ -27,6 +27,23 @@ const steps = [
   { id: 3, title: 'Detalles de Carga' },
 ];
 
+const portLocations = [
+  "Shanghai, China",
+  "Shenzhen, China",
+  "Ningbo, China",
+  "Miami, USA",
+  "Los Angeles, USA",
+  "Houston, USA",
+  "Rotterdam, Países Bajos",
+  "Hamburgo, Alemania",
+  "Valparaíso, Chile",
+  "San Antonio, Chile",
+  "Callao, Perú",
+  "Santos, Brasil",
+  "Cartagena, Colombia",
+  "Otro (Especificar en detalles)"
+];
+
 export default function QuoteSection() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -213,22 +230,28 @@ export default function QuoteSection() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div>
                             <label className="block text-sm font-semibold text-slate-700 mb-1">Ciudad/País de Origen</label>
-                            <input 
-                              type="text" 
+                            <select 
                               {...register('origin')}
-                              className="w-full px-4 py-3 bg-white text-slate-800 placeholder:text-slate-400 rounded-lg border border-slate-200 focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none transition-all"
-                              placeholder="Ej. Shanghai, China"
-                            />
+                              className="w-full px-4 py-3 bg-white text-slate-800 rounded-lg border border-slate-200 focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none transition-all"
+                            >
+                              <option value="">Selecciona un origen...</option>
+                              {portLocations.map(loc => (
+                                <option key={loc} value={loc}>{loc}</option>
+                              ))}
+                            </select>
                             {errors.origin && <p className="text-red-500 text-xs mt-1">{errors.origin.message}</p>}
                           </div>
                           <div>
                             <label className="block text-sm font-semibold text-slate-700 mb-1">Ciudad/País de Destino</label>
-                            <input 
-                              type="text" 
+                            <select 
                               {...register('destination')}
-                              className="w-full px-4 py-3 bg-white text-slate-800 placeholder:text-slate-400 rounded-lg border border-slate-200 focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none transition-all"
-                              placeholder="Ej. San Antonio, Chile"
-                            />
+                              className="w-full px-4 py-3 bg-white text-slate-800 rounded-lg border border-slate-200 focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary outline-none transition-all"
+                            >
+                              <option value="">Selecciona un destino...</option>
+                              {portLocations.map(loc => (
+                                <option key={loc} value={loc}>{loc}</option>
+                              ))}
+                            </select>
                             {errors.destination && <p className="text-red-500 text-xs mt-1">{errors.destination.message}</p>}
                           </div>
                         </div>
@@ -243,7 +266,7 @@ export default function QuoteSection() {
                                   {...register('transportMode')}
                                   className="peer sr-only"
                                 />
-                                <div className="text-center px-4 py-3 rounded-lg border border-slate-200 peer-checked:bg-brand-primary peer-checked:text-white peer-checked:border-brand-primary hover:bg-slate-50 transition-colors font-medium text-sm">
+                                <div className="text-center px-4 py-3 bg-white text-slate-700 rounded-lg border border-slate-200 peer-checked:bg-brand-primary peer-checked:text-white peer-checked:border-brand-primary hover:bg-slate-50 transition-colors font-medium text-sm">
                                   {mode}
                                 </div>
                               </label>
