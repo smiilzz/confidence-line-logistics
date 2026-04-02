@@ -23,16 +23,26 @@ export async function POST(req: Request) {
 
     console.log("Insertando en Supabase...", dataToInsert);
 
-    // 1. Guardar registro en Supabase
-    const { error: dbError } = await supabase
+    // 1. Guardar registro en Supabase (.select fuerza el retorno de datos)
+    const { data: dbData, error: dbError } = await supabase
       .from('quotes')
-      .insert([dataToInsert]);
+      .insert([dataToInsert])
+      .select();
 
-    // Si la base de datos falla, abortamos con 500. No se envía el mail.
+    // Si la base de datos falla explícitamente, abortamos con 500.
     if (dbError) {
-      console.error('Error de Supabase:', dbError);
+      console.error('Error explícito de Supabase:', dbError);
       return NextResponse.json(
         { error: 'No se pudo guardar la cotización en la base de datos' }, 
+        { status: 500 }
+      );
+    }
+
+    // Si la DB no tiró error pero no guardó nada (fallo silencioso en RLS)
+    if (!dbData || dbData.length === 0) {
+      console.error('ALERTA: Supabase no insertó la fila. Posible bloqueo silencioso por Row Level Security (RLS).');
+      return NextResponse.json(
+        { error: 'Bloqueo de seguridad al guardar la cotización. Desactiva o ajusta RLS en la tabla quotes.' }, 
         { status: 500 }
       );
     }
