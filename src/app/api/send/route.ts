@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     if (dbError) {
       console.error('Error explícito de Supabase:', dbError);
       return NextResponse.json(
-        { error: 'No se pudo guardar la cotización en la base de datos' }, 
+        { error: 'No se pudo guardar la cotización en la base de datos' },
         { status: 500 }
       );
     }
@@ -42,11 +42,11 @@ export async function POST(req: Request) {
     if (!dbData || dbData.length === 0) {
       console.error('ALERTA: Supabase no insertó la fila. Posible bloqueo silencioso por Row Level Security (RLS).');
       return NextResponse.json(
-        { error: 'Bloqueo de seguridad al guardar la cotización. Desactiva o ajusta RLS en la tabla quotes.' }, 
+        { error: 'Bloqueo de seguridad al guardar la cotización. Desactiva o ajusta RLS en la tabla quotes.' },
         { status: 500 }
       );
     }
-    
+
     console.log('✅ Registro insertado exitosamente en Supabase');
 
     // 2. Si la DB fue exitosa, enviar correo vía Resend

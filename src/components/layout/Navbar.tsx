@@ -18,9 +18,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled ? "bg-brand-primary/95 backdrop-blur-md shadow-md" : "bg-brand-primary"
-      } text-white`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? "bg-brand-primary/95 backdrop-blur-md shadow-md" : "bg-brand-primary"
+        } text-white`}
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}

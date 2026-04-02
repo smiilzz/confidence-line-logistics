@@ -11,10 +11,10 @@ console.log("Iniciando rebranding a LogiTrust Global...");
 const navPath = path.join(srcComps, 'layout', 'Navbar.tsx');
 let nav = fs.readFileSync(navPath, 'utf8');
 nav = nav.replace(/Confidence Line Logistics/g, 'LogiTrust Global');
-nav = nav.replace(/<button className="bg-white text-brand-primary font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">/g, 
+nav = nav.replace(/<button className="bg-white text-brand-primary font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">/g,
   '<a href="#contacto" className="bg-white text-brand-primary font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition-colors inline-block">');
 nav = nav.replace(/Cotizar ahora\s*<\/button>/g, 'Cotizar ahora</a>');
-nav = nav.replace(/<button className="bg-white text-brand-primary font-bold px-6 py-2 rounded-full mt-2 w-full">/g, 
+nav = nav.replace(/<button className="bg-white text-brand-primary font-bold px-6 py-2 rounded-full mt-2 w-full">/g,
   '<a href="#contacto" className="bg-white text-brand-primary flex items-center justify-center font-bold px-6 py-2 rounded-full mt-2 w-full">');
 fs.writeFileSync(navPath, nav);
 
@@ -73,7 +73,7 @@ fs.writeFileSync(iconPath, `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0
 </svg>`);
 
 // 10. Delete generic app icon if exists
-try { fs.unlinkSync(path.join(srcApp, 'favicon.ico')); console.log("Favicon base.ico eliminado"); } catch (e) {}
+try { fs.unlinkSync(path.join(srcApp, 'favicon.ico')); console.log("Favicon base.ico eliminado"); } catch (e) { }
 
 // 11. Custom 404 page
 const notFoundPath = path.join(srcApp, 'not-found.tsx');
