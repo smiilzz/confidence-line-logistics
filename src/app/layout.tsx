@@ -10,8 +10,15 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "LogiTrust Global",
-  description: "Soluciones logísticas mundiales seguras, eficientes y confiables.",
+  title: "LogiTrust Global | Soluciones Logísticas de Clase Mundial",
+  description: "Especialistas en transporte internacional, freight forwarding y gestión aduanera. Soluciones logísticas eficientes y seguras para su negocio a nivel global.",
+  keywords: ["transporte internacional", "freight forwarding", "gestión aduanera", "logística global", "importación", "exportación"],
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({

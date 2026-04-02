@@ -56,12 +56,12 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-brand-primary absolute top-20 left-0 right-0 p-4 flex flex-col gap-4 shadow-lg border-t border-white/10">
-          <Link href="#servicios" className="hover:text-brand-secondary p-2">Servicios</Link>
-          <Link href="#cobertura" className="hover:text-brand-secondary p-2">Red Logística</Link>
-          <Link href="#nosotros" className="hover:text-brand-secondary p-2">Nosotros</Link>
-          <Link href="#blog" className="hover:text-brand-secondary p-2">Recursos</Link>
-          <Link href="#contacto" className="hover:text-brand-secondary p-2">Contacto</Link>
-          <a href="#contacto" className="bg-white text-brand-primary flex items-center justify-center font-bold px-6 py-2 rounded-full mt-2 w-full">
+          <Link href="#servicios" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-secondary p-2">Servicios</Link>
+          <Link href="#cobertura" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-secondary p-2">Red Logística</Link>
+          <Link href="#nosotros" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-secondary p-2">Nosotros</Link>
+          <Link href="#blog" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-secondary p-2">Recursos</Link>
+          <Link href="#contacto" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-secondary p-2">Contacto</Link>
+          <a href="#contacto" onClick={() => setIsMobileMenuOpen(false)} className="bg-white text-brand-primary flex items-center justify-center font-bold px-6 py-2 rounded-full mt-2 w-full">
             Cotizar ahora</a>
         </div>
       )}
